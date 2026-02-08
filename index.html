@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- SEO Meta Tags -->
+  <title>Embedded Systems Pro | Практичний курс C++ та Arduino в Києві</title>
+  <meta name="description" content="Офлайн-курс Embedded розробки у Києві. Від C++ до автономних радіосистем. Для військових, волонтерів та інженерів-світчерів. Arduino, ESP32, LoRa.">
+  <meta name="keywords" content="embedded курс, arduino курс київ, esp32 навчання, c++ embedded, радіосистеми, LoRa, офлайн курс програмування">
+  <meta name="author" content="Embedded Systems Pro">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Embedded Systems Pro | Практичний курс C++ та Arduino">
+  <meta property="og:description" content="Офлайн-курс Embedded розробки у Києві для тих, хто хоче створювати залізо, що працює за їхніми правилами.">
+  <meta property="og:locale" content="uk_UA">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  
+  <!-- Google Tag Manager -->
+  <script>
+    // GTM will be initialized with config
+    window.dataLayer = window.dataLayer || [];
+  </script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container">
+      <a href="#" class="logo" aria-label="Embedded Systems Pro">
+        <img src="assets/logo.svg" alt="Embedded Systems Pro Logo" width="180" height="40">
+      </a>
+      <nav class="nav-cta">
+        <a href="#cases" class="btn btn-secondary">Програма</a>
+        <a href="#registration" class="btn btn-primary">Забронювати місце</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span>Офлайн-курс у Києві</span>
+          </div>
+          
+          <h1>
+            Практичний Embedded:
+            <span>від C++ до автономних радіосистем</span>
+          </h1>
+          
+          <p class="hero-subtitle">
+            Офлайн-курс у Києві для тих, хто хоче створювати залізо, що працює за їхніми правилами.
+          </p>
+          
+          <div class="hero-buttons">
+            <a href="#registration" class="btn btn-primary btn-large">
+              <span class="btn-icon">🚀</span>
+              <span class="btn-text">Забронювати місце</span>
+            </a>
+            <a href="#cases" class="btn btn-secondary btn-large">
+              <span class="btn-icon">📚</span>
+              <span class="btn-text">Програма навчання</span>
+            </a>
+          </div>
+          
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-value">12+</div>
+              <div class="stat-label">Практичних проєктів</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">100%</div>
+              <div class="stat-label">Практики на реальному залізі</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">24/7</div>
+              <div class="stat-label">Підтримка ментора</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cases Section -->
+    <section class="cases" id="cases">
+      <div class="container">
+        <div class="section-title">
+          <h2>НЕ ТІЛЬКИ РЕБ: ЩО МОЖНА ЗАМУТИТИ?</h2>
+          <p>Реальні проєкти на Arduino та ESP32, які ви створите під час курсу</p>
+        </div>
+        
+        <div class="cases-grid">
+          <!-- Case 1: Packet Sniffer -->
+          <article class="case-card" id="case-sniffer">
+            <span class="case-icon">📡</span>
+            <h3>Packet Sniffer</h3>
+            <p>Аналіз WiFi та Bluetooth трафіку. Розуміння протоколів бездротового зв'язку на практиці.</p>
+            <div class="case-tech">
+              <div class="case-tech-label">Технології</div>
+              <div class="tech-stack">
+                <span class="tech-tag">ESP32</span>
+                <span class="tech-tag">WiFi Monitor</span>
+                <span class="tech-tag">BLE</span>
+                <span class="tech-tag">C++</span>
+              </div>
+            </div>
+          </article>
+          
+          <!-- Case 2: Пеленгатор -->
+          <article class="case-card" id="case-direction">
+            <span class="case-icon">🧭</span>
+            <h3>Автономний Пеленгатор</h3>
+            <p>Пошук радіосигналів та дронів. Визначення напрямку на джерело сигналу без GPS.</p>
+            <div class="case-tech">
+              <div class="case-tech-label">Технології</div>
+              <div class="tech-stack">
+                <span class="tech-tag">Arduino</span>
+                <span class="tech-tag">RTL-SDR</span>
+                <span class="tech-tag">Антени</span>
+                <span class="tech-tag">DSP</span>
+              </div>
+            </div>
+          </article>
+          
+          <!-- Case 3: Метеостанція LoRa -->
+          <article class="case-card" id="case-lora">
+            <span class="case-icon">☁️</span>
+            <h3>Метеостанція LoRa</h3>
+            <p>Передача даних на кілометри без мережі. Автономна система моніторингу погоди.</p>
+            <div class="case-tech">
+              <div class="case-tech-label">Технології</div>
+              <div class="tech-stack">
+                <span class="tech-tag">LoRa SX1278</span>
+                <span class="tech-tag">ESP32</span>
+                <span class="tech-tag">Датчики BME280</span>
+                <span class="tech-tag">Solar Power</span>
+              </div>
+            </div>
+          </article>
+          
+          <!-- Case 4: Телеметрія -->
+          <article class="case-card" id="case-telemetry">
+            <span class="case-icon">🏠</span>
+            <h3>Телеметрія</h3>
+            <p>Дистанційний контроль об'єктів. Збір та аналіз даних у реальному часі.</p>
+            <div class="case-tech">
+              <div class="case-tech-label">Технології</div>
+              <div class="tech-stack">
+                <span class="tech-tag">MQTT</span>
+                <span class="tech-tag">ESP32</span>
+                <span class="tech-tag">InfluxDB</span>
+                <span class="tech-tag">Grafana</span>
+              </div>
+            </div>
+          </article>
+          
+          <!-- Case 5: Embedded Server -->
+          <article class="case-card" id="case-server">
+            <span class="case-icon">🗄️</span>
+            <h3>Embedded-Сервер</h3>
+            <p>Захищене локальне сховище даних. Автономний сервер на мікроконтролері.</p>
+            <div class="case-tech">
+              <div class="case-tech-label">Технології</div>
+              <div class="tech-stack">
+                <span class="tech-tag">ESP32</span>
+                <span class="tech-tag">LittleFS</span>
+                <span class="tech-tag">HTTPS</span>
+                <span class="tech-tag">REST API</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Audience Section -->
+    <section class="audience" id="audience">
+      <div class="container">
+        <div class="section-title">
+          <h2>Для кого цей курс</h2>
+          <p>Ми створили програму для трьох ключових аудиторій</p>
+        </div>
+        
+        <div class="audience-grid">
+          <!-- Military -->
+          <article class="audience-card military">
+            <div class="audience-icon">🎖️</div>
+            <h3>Військові та волонтери</h3>
+            <p>
+              Отримайте інженерну перевагу в полі. Навчіться створювати та модифікувати 
+              електронні пристрої для вирішення тактичних задач. Розуміння радіотехніки 
+              та embedded-систем — ключ до технологічної переваги.
+            </p>
+          </article>
+          
+          <!-- Switchers -->
+          <article class="audience-card">
+            <div class="audience-icon">💻</div>
+            <h3>Світчери</h3>
+            <p>
+              Швидкий вхід в Embedded через практику, а не суху теорію. 
+              Якщо ви вже програмуєте, але хочете "торкнутися заліза" — 
+              цей курс дасть вам реальні навички за лічені тижні.
+            </p>
+          </article>
+          
+          <!-- Makers -->
+          <article class="audience-card">
+            <div class="audience-icon">🔧</div>
+            <h3>Мейкери</h3>
+            <p>
+              Перехід від аматорських схем до професійної розробки. 
+              Структурований підхід, продакшн-практики та глибоке розуміння 
+              того, як працює обладнання на низькому рівні.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location" id="location">
+      <div class="container">
+        <div class="location-content">
+          <div class="location-info">
+            <h2>Офлайн-формат та Локація</h2>
+            <p>
+              Навчання в обладнаній лабораторії в Києві. Все необхідне залізо 
+              надається на час занять — вам не потрібно нічого купувати заздалегідь.
+            </p>
+            
+            <div class="location-details">
+              <div class="location-item">
+                <div class="location-item-icon">📍</div>
+                <div class="location-item-content">
+                  <h4>Адреса</h4>
+                  <p id="location-address">Київ, район метро Либідська</p>
+                  <p class="text-muted" id="location-note">Повна адреса надсилається після реєстрації</p>
+                </div>
+              </div>
+              
+              <div class="location-item">
+                <div class="location-item-icon">🔧</div>
+                <div class="location-item-content">
+                  <h4>Обладнання</h4>
+                  <p>ESP32, Arduino, LoRa модулі, датчики, паяльне обладнання — все надається на місці</p>
+                </div>
+              </div>
+              
+              <div class="location-item">
+                <div class="location-item-icon">👥</div>
+                <div class="location-item-content">
+                  <h4>Формат групи</h4>
+                  <p>Малі групи до 10 осіб для індивідуального підходу</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="location-visual">
+            <div class="location-map-placeholder">
+              <span class="map-icon">🗺️</span>
+              <span class="map-text">// Київ, Україна</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing & Registration Section -->
+    <section class="pricing" id="registration">
+      <div class="container">
+        <div class="section-title">
+          <h2>Вартість та Реєстрація</h2>
+          <p>Інвестуйте в навички, що працюють на вас</p>
+        </div>
+        
+        <div class="pricing-content">
+          <div class="pricing-card">
+            <div class="pricing-card-content">
+              <div class="pricing-label">Повний курс</div>
+              <div class="pricing-value" id="course-price">15 000 ₴</div>
+              <p class="pricing-note" id="price-note">* Можлива оплата частинами</p>
+              
+              <div class="pricing-features">
+                <div class="pricing-feature">
+                  <span class="pricing-feature-icon">✓</span>
+                  <span>12+ практичних проєктів</span>
+                </div>
+                <div class="pricing-feature">
+                  <span class="pricing-feature-icon">✓</span>
+                  <span>Все обладнання на час курсу</span>
+                </div>
+                <div class="pricing-feature">
+                  <span class="pricing-feature-icon">✓</span>
+                  <span>Сертифікат про закінчення</span>
+                </div>
+                <div class="pricing-feature">
+                  <span class="pricing-feature-icon">✓</span>
+                  <span>Підтримка ментора 24/7</span>
+                </div>
+                <div class="pricing-feature">
+                  <span class="pricing-feature-icon">✓</span>
+                  <span>Доступ до закритої спільноти</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="registration-form-wrapper" id="registration-form-wrapper">
+            <h2>Подати заявку</h2>
+            <p>Залиште контакти, і ми зв'яжемося з вами для уточнення деталей</p>
+            
+            <div id="form-message" class="form-message"></div>
+            
+            <form id="registration-form" novalidate>
+              <div class="form-group">
+                <label for="name">Ім'я <span>*</span></label>
+                <input 
+                  type="text" 
+                  id="name" 
+                  name="name" 
+                  class="form-input" 
+                  placeholder="Ваше ім'я"
+                  required
+                  minlength="2"
+                  autocomplete="name"
+                >
+              </div>
+              
+              <div class="form-group">
+                <label for="phone">Номер телефону <span>*</span></label>
+                <input 
+                  type="tel" 
+                  id="phone" 
+                  name="phone" 
+                  class="form-input" 
+                  placeholder="+380 XX XXX XX XX"
+                  required
+                  autocomplete="tel"
+                >
+              </div>
+              
+              <div class="form-group">
+                <label for="telegram">Нік у Telegram</label>
+                <input 
+                  type="text" 
+                  id="telegram" 
+                  name="telegram" 
+                  class="form-input" 
+                  placeholder="@username"
+                  autocomplete="username"
+                >
+              </div>
+              
+              <button type="submit" class="btn btn-primary btn-large form-submit">
+                <span class="spinner"></span>
+                <span class="btn-text">Подати заявку на навчання</span>
+              </button>
+              
+              <p class="form-note">
+                Натискаючи кнопку, ви погоджуєтесь з обробкою персональних даних
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <a href="#" class="footer-logo">
+          <img src="assets/logo.svg" alt="Embedded Systems Pro" width="150" height="30">
+        </a>
+        <p class="footer-text">© 2026 Embedded Systems Pro. Всі права захищені.</p>
+        <nav class="footer-links">
+          <a href="#cases">Програма</a>
+          <a href="#audience">Для кого</a>
+          <a href="#registration">Реєстрація</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+  
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <p>Для коректної роботи сайту увімкніть JavaScript</p>
+  </noscript>
+</body>
+</html>
