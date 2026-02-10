@@ -11,7 +11,199 @@ document.addEventListener('DOMContentLoaded', function () {
     initForm();
     initAnimations();
     loadDynamicContent();
+    initQuiz();
 });
+
+/**
+ * Interactive Quiz
+ */
+function initQuiz() {
+    const quizData = [
+        {
+            question: 'Твій пристрій має працювати автономно в лісі 3 місяці. Яку технологію зв\'язку обереш?',
+            answers: [
+                { text: 'Стандартний Wi-Fi', letter: 'A' },
+                { text: 'LoRa-модуль', letter: 'B' }
+            ],
+            correct: 1,
+            explanations: [
+                'Занадто «прожорливий» для батарейки і малий радіус дії.',
+                'Правильно! Працює на великих відстанях при мінімальному споживанні енергії.'
+            ]
+        },
+        {
+            question: 'Що краще підійде для створення захищеного месенджера, який шифрує дані «на льоту»?',
+            answers: [
+                { text: 'Arduino Uno', letter: 'A' },
+                { text: 'ESP32', letter: 'B' }
+            ],
+            correct: 1,
+            explanations: [
+                'Слабкий процесор, немає вбудованого Wi-Fi/Bluetooth.',
+                'Правильно! Має два ядра, вбудовану криптографію та бездротові інтерфейси.'
+            ]
+        },
+        {
+            question: 'Як виявити дрон або радіостанцію, якщо вони не підключені до твоєї мережі?',
+            answers: [
+                { text: 'Сканувати порти в браузері', letter: 'A' },
+                { text: 'Використати SDR-сканер ефіру', letter: 'B' }
+            ],
+            correct: 1,
+            explanations: [
+                'Це працює тільки для підключених девайсів.',
+                'Правильно! Він дозволяє «бачити» будь-яке радіовипромінювання навколо.'
+            ]
+        },
+        {
+            question: 'Щоб твій девайс не розрядився за добу, в коді обов\'язково треба прописати...',
+            answers: [
+                { text: 'Функцію delay(1000)', letter: 'A' },
+                { text: 'Режим Deep Sleep', letter: 'B' }
+            ],
+            correct: 1,
+            explanations: [
+                'Процесор продовжує працювати і споживати струм.',
+                'Правильно! Це «засинання» мікроконтролера до потрібної події або таймера.'
+            ]
+        }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    const startBtn = document.getElementById('quiz-start-btn');
+    const restartBtn = document.getElementById('quiz-restart-btn');
+    const startScreen = document.getElementById('quiz-start');
+    const questionsScreen = document.getElementById('quiz-questions');
+    const resultScreen = document.getElementById('quiz-result');
+    const questionContainer = document.getElementById('quiz-question-container');
+    const progressBar = document.getElementById('quiz-progress-bar');
+
+    if (!startBtn) return;
+
+    startBtn.addEventListener('click', function () {
+        currentQuestion = 0;
+        score = 0;
+        startScreen.style.display = 'none';
+        resultScreen.style.display = 'none';
+        questionsScreen.style.display = 'block';
+        showQuestion(currentQuestion);
+        trackEvent('Quiz', 'Start', 'Quiz Started');
+    });
+
+    restartBtn.addEventListener('click', function () {
+        currentQuestion = 0;
+        score = 0;
+        resultScreen.style.display = 'none';
+        questionsScreen.style.display = 'block';
+        showQuestion(currentQuestion);
+        trackEvent('Quiz', 'Restart', 'Quiz Restarted');
+    });
+
+    function showQuestion(index) {
+        const q = quizData[index];
+        const progress = ((index) / quizData.length) * 100;
+        progressBar.style.width = progress + '%';
+
+        questionContainer.innerHTML = `
+            <div class="quiz-question-card">
+                <div class="quiz-question-number">Питання ${index + 1} з ${quizData.length}</div>
+                <div class="quiz-question-text">${q.question}</div>
+                <div class="quiz-answers">
+                    ${q.answers.map((a, i) => `
+                        <button class="quiz-answer-btn" data-index="${i}">
+                            <span class="quiz-answer-letter">${a.letter}</span>
+                            <span>${a.text}</span>
+                        </button>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+
+        const answerBtns = questionContainer.querySelectorAll('.quiz-answer-btn');
+        answerBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                handleAnswer(this, index);
+            });
+        });
+    }
+
+    function handleAnswer(selectedBtn, qIndex) {
+        const q = quizData[qIndex];
+        const selectedIndex = parseInt(selectedBtn.dataset.index);
+        const isCorrect = selectedIndex === q.correct;
+        const allBtns = questionContainer.querySelectorAll('.quiz-answer-btn');
+
+        // Disable all buttons
+        allBtns.forEach(btn => btn.disabled = true);
+
+        // Highlight correct and incorrect
+        if (isCorrect) {
+            selectedBtn.classList.add('correct');
+            score++;
+        } else {
+            selectedBtn.classList.add('incorrect');
+            // Also show which was correct
+            allBtns[q.correct].classList.add('correct');
+        }
+
+        // Show explanation
+        const explanationText = isCorrect ? q.explanations[q.correct] : q.explanations[selectedIndex];
+        const explanationDiv = document.createElement('div');
+        explanationDiv.className = 'quiz-explanation ' + (isCorrect ? 'correct' : 'incorrect');
+        explanationDiv.textContent = isCorrect ? '✅ ' + explanationText : '❌ ' + explanationText;
+        questionContainer.querySelector('.quiz-question-card').appendChild(explanationDiv);
+
+        // Show next button
+        const isLast = qIndex === quizData.length - 1;
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'quiz-next-btn';
+        nextBtn.textContent = isLast ? 'Переглянути результат' : 'Наступне питання →';
+        questionContainer.querySelector('.quiz-question-card').appendChild(nextBtn);
+
+        nextBtn.addEventListener('click', function () {
+            if (isLast) {
+                showResult();
+            } else {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+            }
+        });
+
+        trackEvent('Quiz', 'Answer', `Q${qIndex + 1}: ${isCorrect ? 'Correct' : 'Incorrect'}`);
+    }
+
+    function showResult() {
+        questionsScreen.style.display = 'none';
+        resultScreen.style.display = 'block';
+        progressBar.style.width = '100%';
+
+        const scoreEl = document.getElementById('quiz-score');
+        const titleEl = document.getElementById('quiz-result-title');
+        const textEl = document.getElementById('quiz-result-text');
+        const iconEl = document.getElementById('quiz-result-icon');
+
+        scoreEl.textContent = score + ' / ' + quizData.length;
+
+        if (score === quizData.length) {
+            iconEl.textContent = '🏆';
+            titleEl.textContent = 'Бездоганно!';
+            textEl.textContent = 'Ти вже маєш серйозну базу. На курсі зможеш прокачати навички до професійного рівня.';
+        } else if (score >= quizData.length / 2) {
+            iconEl.textContent = '💪';
+            titleEl.textContent = 'Непогано!';
+            textEl.textContent = 'Є хороший фундамент. Курс допоможе заповнити прогалини і вийти на новий рівень.';
+        } else {
+            iconEl.textContent = '🚀';
+            titleEl.textContent = 'Є куди рости!';
+            textEl.textContent = 'Не хвилюйся — саме для цього існує наш курс. Ми навчимо тебе всьому з нуля.';
+        }
+
+        trackEvent('Quiz', 'Complete', `Score: ${score}/${quizData.length}`);
+    }
+}
+
 
 /**
  * Header scroll effect
@@ -314,7 +506,7 @@ function initAnimations() {
     }, observerOptions);
 
     // Observe elements for animation
-    document.querySelectorAll('.case-card, .audience-card, .location-item').forEach(el => {
+    document.querySelectorAll('.case-card, .audience-card, .location-item, .goal-card, .why-us-item, .result-item').forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
