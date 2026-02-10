@@ -14,8 +14,5 @@
   <circle cx="35" cy="25" r="2" fill="url(#logoGradient)"/>
   <circle cx="15" cy="42" r="2" fill="url(#logoGradient)"/>
   <circle cx="15" cy="8" r="2" fill="url(#logoGradient)"/>
-  <!-- Text -->
-  <text x="45" y="32" font-family="JetBrains Mono, Roboto Mono, monospace" font-size="18" font-weight="700" fill="#FFFFFF">
-    EMBEDDED<tspan fill="url(#logoGradient)">PRO</tspan>
-  </text>
 </svg>
+
